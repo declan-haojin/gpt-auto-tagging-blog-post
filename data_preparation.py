@@ -53,17 +53,15 @@ with open(csv_file_path, "w", newline="") as f:
         print(title + "...", end="")
 
         # Let GPT-3 generate the tags
-        prompt = f'Generate top 10 English single-word blog tags separated by comma for this post: "${text}"'
-        try:
-            res = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
-        except Exception as e:
-            print("Failed!")
-            continue
-        res = res.choices[0].message['content']
-        tags = res.split(", ")
-
-        for tag in tags:
-            writer.writerow([title, tag])
+        # prompt = f'Generate top 10 English single-word blog tags separated by comma for this post: "${text}"'
+        # try:
+        #     res = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
+        # except Exception as e:
+        #     print("Failed!")
+        #     continue
+        # res = res.choices[0].message['content']
+        # tags = res.split(", ")
+        writer.writerow([title, text])
         print("Success!")
 
 
